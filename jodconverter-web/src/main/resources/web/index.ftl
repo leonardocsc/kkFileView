@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0" />
-    <title>kkFileView演示首页</title>
+    <title>AI智能文档预览演示首页</title>
     <link rel="stylesheet" href="css/viewer.min.css" />
     <link rel="stylesheet" href="css/loading.css" />
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<h1>文件预览项目接入和测试界面</h1>
+<h1>AI智能文档预览接入和测试界面</h1>
 <div class="panel-group" id="accordion">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -32,18 +32,18 @@
         <div id="collapseOne" class="panel-collapse collapse">
             <div class="panel-body">
                 <div>
-                    如果你的项目需要接入文件预览项目，达到对docx、excel、ppt、jpg等文件的预览效果，那么通过在你的项目中加入下面的代码就可以
+                    如果你的项目需要接入AI智能文档预览，达到对docx、excel、ppt、jpg等文件的预览效果，那么通过在你的项目中加入下面的代码就可以
                     成功实现：
                     <pre style="background-color: #2f332a;color: #cccccc">
 var url = 'http://127.0.0.1:8080/file/test.txt'; //要预览文件的访问地址
-window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(url));
+window.open('http://124.70.44.244:8012/onlinePreview?url='+encodeURIComponent(url));
                     </pre>
                 </div>
                 <div>
                     新增多图片同时预览功能，接口如下：
                     <pre style="background-color: #2f332a;color: #cccccc">
 var fileUrl =url1+"|"+"url2";//多文件使用“|”字符隔开
-window.open('http://127.0.0.1:8012/picturesPreview?urls='+encodeURIComponent(fileUrl));
+window.open('http://124.70.44.244:8012/picturesPreview?urls='+encodeURIComponent(fileUrl));
                     </pre>
                 </div>
             </div>
@@ -99,14 +99,11 @@ window.open('http://127.0.0.1:8012/picturesPreview?urls='+encodeURIComponent(fil
                         12. 修复url中包含特殊字符可能会引起的预览异常<br>
                         13. 修复转换文件队列addTask异常<br>
                         14. 修复其他已经问题<br>
-                        15. 官网建设：<a href="https://kkfileview.keking.cn">https://kkfileview.keking.cn</a><br>
-                        16. 官方Docker镜像仓库建设：<a href="https://hub.docker.com/r/keking/kkfileview">https://hub.docker.com/r/keking/kkfileview</a><br><br>
 
                     2019年06月18日 ：<br>
                         1. 支持自动清理缓存及预览文件<br>
                         2. 支持http/https下载流url文件预览<br>
                         3. 支持FTP url文件预览<br>
-                        4. 加入Docker构建<br><br>
 
                     2019年04月08日 ：<br>
                         1. 缓存及队列实现抽象，提供JDK和REDIS两种实现(REDIS成为可选依赖)<br>
@@ -129,16 +126,12 @@ window.open('http://127.0.0.1:8012/picturesPreview?urls='+encodeURIComponent(fil
                         2.修复项目模块依赖引入不到的问题<br>
                         3.新增spring boot profile，支持多环境配置<br>
                         4.引入pdf.js预览doc等文件，支持doc标题生成pdf预览菜单，支持手机端预览<br><br>
-
-                    2017年12月12日：<br>
-                        1.项目gitee开源:<a href="https://gitee.com/kekingcn/file-online-preview" target="_blank">https://gitee.com/kekingcn/file-online-preview</a><br>
-                        2.项目github开源:<a href="https://github.com/kekingcn/kkFileView" target="_blank">https://github.com/kekingcn/kkFileView</a>
                 </div>
             </div>
         </div>
-        <div class="panel-body">
-            <div id = "comments"></div>
-        </div>
+<#--        <div class="panel-body">-->
+<#--            <div id = "comments"></div>-->
+<#--        </div>-->
 
     </div>
 </div>
@@ -230,17 +223,17 @@ window.open('http://127.0.0.1:8012/picturesPreview?urls='+encodeURIComponent(fil
                 dataType: "json" /*设置返回值类型为文本*/
             });
         });
-        var gitalk = new Gitalk({
-            clientID: '525d7f16e17aab08cef5',
-            clientSecret: 'd1154e3aee5c8f1cbdc918b5c97a4f4157e0bfd9',
-            repo: 'kkFileView',
-            owner: 'kekingcn',
-            admin: ['kekingcn,klboke,gitchenjh'],
-            language: 'zh-CN',
-            id: location.pathname,
-            distractionFreeMode: false
-        })
-        gitalk.render((document.getElementById('comments')))
+        // var gitalk = new Gitalk({
+        //     clientID: '525d7f16e17aab08cef5',
+        //     clientSecret: 'd1154e3aee5c8f1cbdc918b5c97a4f4157e0bfd9',
+        //     repo: 'kkFileView',
+        //     owner: 'kekingcn',
+        //     admin: ['kekingcn,klboke,gitchenjh'],
+        //     language: 'zh-CN',
+        //     id: location.pathname,
+        //     distractionFreeMode: false
+        // })
+        // gitalk.render((document.getElementById('comments')))
     });
 </script>
 </body>

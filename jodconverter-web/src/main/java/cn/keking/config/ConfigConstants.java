@@ -27,6 +27,7 @@ public class ConfigConstants {
     private static String FILE_DIR = OfficeUtils.getHomePath() + File.separator + "file" + File.separator;
     private static CopyOnWriteArraySet<String> TRUST_HOST_SET;
     private static String PDF_DOWNLOAD_DISABLE;
+    public static  String CONVERTED_FILE_CHARSET;
 
     public static final String DEFAULT_CACHE_ENABLED = "true";
     public static final String DEFAULT_TXT_TYPE = "txt,html,htm,asp,jsp,xml,json,properties,md,gitignore,log,java,py,c,cpp,sql,sh,bat,m,bas,prg,cmd";
@@ -40,8 +41,22 @@ public class ConfigConstants {
     public static final String DEFAULT_TRUST_HOST = "default";
     public static final String DEFAULT_PDF_DOWNLOAD_DISABLE = "true";
 
+
     public static Boolean isCacheEnabled() {
         return CACHE_ENABLED;
+    }
+
+    public static String getConvertedFileCharset() {
+        return CONVERTED_FILE_CHARSET;
+    }
+
+    public static void setConvertedFileCharsetValue(String convertedFileCharset) {
+        CONVERTED_FILE_CHARSET = convertedFileCharset;
+    }
+
+    @Value("${converted.file.charset}")
+    public void setConvertedFileCharset(String convertedFileCharset){
+        setConvertedFileCharsetValue(convertedFileCharset);
     }
 
     @Value("${cache.enabled:true}")

@@ -2,16 +2,19 @@ package cn.keking.web.controller;
 
 import cn.keking.config.ConfigConstants;
 import cn.keking.model.FileAttribute;
+import cn.keking.model.ReturnResponse;
 import cn.keking.service.FilePreview;
 import cn.keking.service.FilePreviewFactory;
 
 import cn.keking.service.cache.CacheService;
+import cn.keking.service.count.CountService;
 import cn.keking.utils.DownloadUtils;
 import cn.keking.utils.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,14 +42,17 @@ public class OnlinePreviewController {
 
     private final DownloadUtils downloadUtils;
 
+    private final CountService countService;
+
     public OnlinePreviewController(FilePreviewFactory filePreviewFactory,
                                    FileUtils fileUtils,
                                    CacheService cacheService,
-                                   DownloadUtils downloadUtils) {
+                                   DownloadUtils downloadUtils, CountService countService) {
         this.previewFactory = filePreviewFactory;
         this.fileUtils = fileUtils;
         this.cacheService = cacheService;
         this.downloadUtils = downloadUtils;
+        this.countService = countService;
     }
 
 
@@ -105,6 +111,13 @@ public class OnlinePreviewController {
         logger.info("添加转码队列url：{}", url);
         cacheService.addQueueTask(url);
         return "success";
+    }
+
+    @ResponseBody
+    @GetMapping(value = "queryCount")
+    public ReturnResponse<Long> queryCount(String accountId){
+        long count = countService.queryCount(accountId);
+        return new ReturnResponse<>(0, "success", count);
     }
 
 }

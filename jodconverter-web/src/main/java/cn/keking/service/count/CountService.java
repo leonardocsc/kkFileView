@@ -1,5 +1,8 @@
 package cn.keking.service.count;
 
+/**
+ * @author leizhi
+ */
 public interface CountService {
 
     /**

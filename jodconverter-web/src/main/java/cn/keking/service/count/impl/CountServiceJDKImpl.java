@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * jdk缓存计数器
  */
 @Service
-@ConditionalOnExpression("'${cache.type:default}'.equals('jdk')")
+@ConditionalOnExpression("'${count.type:default}'.equals('default')")
 public class CountServiceJDKImpl implements CountService {
 
     private static final Map<String, Long> map = new ConcurrentHashMap<>();

@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 /**
  * redis存储计数信息
+ *
+ * @author leizhi
  */
-@ConditionalOnExpression("'${cache.type:default}'.equals('redis')")
+@ConditionalOnExpression("'${count.type:default}'.equals('redis')")
 @Service
 public class CountServiceRedisImpl implements CountService {
 

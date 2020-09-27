@@ -29,8 +29,8 @@ public class FileUtils {
 
     private final static Logger logger = LoggerFactory.getLogger(FileUtils.class);
 
-    private final String DEFAULT_CONVERTER_CHARSET = StrUtil.isBlank(ConfigConstants.getConvertedFileCharset()) ?
-            System.getProperty("sun.jnu.encoding") : ConfigConstants.getConvertedFileCharset();
+//    private final String DEFAULT_CONVERTER_CHARSET = StrUtil.isBlank(ConfigConstants.getConvertedFileCharset()) ?
+//            System.getProperty("sun.jnu.encoding") : ConfigConstants.getConvertedFileCharset();
 
     private final String fileDir = ConfigConstants.getFileDir();
 
@@ -242,9 +242,8 @@ public class FileUtils {
      */
     public void doActionConvertedFile(String outFilePath) {
         StringBuilder sb = new StringBuilder();
-        logger.info("DEFAULT_CONVERTER_CHARSET值为:{}",DEFAULT_CONVERTER_CHARSET);
         try (InputStream inputStream = new FileInputStream(outFilePath);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, DEFAULT_CONVERTER_CHARSET))) {
+             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, System.getProperty("sun.jnu.encoding")))) {
             String line;
             while (null != (line = reader.readLine())) {
                 if (line.contains("charset=gb2312")) {

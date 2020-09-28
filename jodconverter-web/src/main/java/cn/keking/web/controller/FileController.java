@@ -1,5 +1,7 @@
 package cn.keking.web.controller;
 import cn.keking.config.ConfigConstants;
+import cn.keking.huawei.ObsService;
+import cn.keking.huawei.ObsServiceContext;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
@@ -47,21 +49,19 @@ public class FileController {
         int winSep = fileName.lastIndexOf('\\');
         // Cut off at latest possible point
         int pos = (Math.max(winSep, unixSep));
-        if (pos != -1)  {
+        if (pos != -1) {
             fileName = fileName.substring(pos + 1);
         }
-        // 判断是否存在同名文件
-        if (existsFile(fileName)) {
-            return new ObjectMapper().writeValueAsString(new ReturnResponse<String>(1, "存在同名文件，请先删除原有文件再次上传", null));
-        }
-        File outFile = new File(fileDir + demoPath);
-        if (!outFile.exists()) {
-            outFile.mkdirs();
-        }
-        logger.info("上传文件：{}", fileDir + demoPath + fileName);
-        try(InputStream in = file.getInputStream(); OutputStream out = new FileOutputStream(fileDir + demoPath + fileName)) {
-            StreamUtils.copy(in, out);
-            return new ObjectMapper().writeValueAsString(new ReturnResponse<String>(0, "SUCCESS", null));
+        ObsService storageService = ObsServiceContext.getObsService("pre", "FIGOLTWBOHLWUCET7BYH",
+                "HBWwhFN9EX6yfHjY8j7Pxl9H4yLIDyTlDHrVpBvP", "obs.cn-north-4.myhuaweicloud.com");
+
+        String filePathName = fileDir + demoPath + fileName;
+        storageService.doesObjectExist(filePathName);
+        logger.info("上传文件：{}", filePathName);
+
+        try (InputStream in = file.getInputStream()) {
+            String resp = storageService.fileUpload(filePathName, in);
+            return new ObjectMapper().writeValueAsString(new ReturnResponse<String>(0, "SUCCESS", resp));
         } catch (IOException e) {
             logger.error("文件上传失败", e);
             return new ObjectMapper().writeValueAsString(new ReturnResponse<String>(1, "FAILURE", null));
@@ -90,6 +90,7 @@ public class FileController {
         }
         return new ObjectMapper().writeValueAsString(list);
     }
+
 
     private boolean existsFile(String fileName) {
         File file = new File(fileDir + demoPath + fileName);

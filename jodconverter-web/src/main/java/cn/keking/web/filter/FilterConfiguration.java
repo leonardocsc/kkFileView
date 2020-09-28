@@ -83,14 +83,14 @@ public class FilterConfiguration {
 //        return registrationBean;
 //    }
 
-    @Bean
-    public FilterRegistrationBean getApiGatewaySignatureFilter() {
-        Set<String> filterUri = new HashSet<>();
-        filterUri.add("/onlinePreview");
-        filterUri.add("/picturesPreview");
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(new ApiGatewaySignatureFilter());
-        registration.setUrlPatterns(filterUri);
-        return registration;
-    }
+//    @Bean
+//    public FilterRegistrationBean getApiGatewaySignatureFilter() {
+//        Set<String> filterUri = new HashSet<>();
+//        filterUri.add("/onlinePreview");
+//        filterUri.add("/picturesPreview");
+//        FilterRegistrationBean registration = new FilterRegistrationBean();
+//        registration.setFilter(new ApiGatewaySignatureFilter());
+//        registration.setUrlPatterns(filterUri);
+//        return registration;
+//    }
 }

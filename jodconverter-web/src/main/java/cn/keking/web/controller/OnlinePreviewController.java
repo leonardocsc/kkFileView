@@ -55,13 +55,18 @@ public class OnlinePreviewController {
         this.countService = countService;
     }
 
-
     @RequestMapping(value = "/onlinePreview")
     public String onlinePreview(String url, Model model, HttpServletRequest req) {
         FileAttribute fileAttribute = fileUtils.getFileAttribute(url);
         req.setAttribute("fileKey", req.getParameter("fileKey"));
         model.addAttribute("pdfDownloadDisable", ConfigConstants.getPdfDownloadDisable());
         model.addAttribute("officePreviewType", req.getParameter("officePreviewType"));
+
+        // obs信息
+        model.addAttribute("bucketName", req.getParameter("bucketName"));
+        model.addAttribute("accessKey", req.getParameter("accessKey"));
+        model.addAttribute("secretKey", req.getParameter("secretKey"));
+        model.addAttribute("endPoint", req.getParameter("endPoint"));
         FilePreview filePreview = previewFactory.get(fileAttribute);
         logger.info("预览文件url：{}，previewType：{}", url, fileAttribute.getType());
         return filePreview.filePreviewHandle(url, model, fileAttribute);

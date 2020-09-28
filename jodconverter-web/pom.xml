@@ -209,6 +209,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.huaweicloud</groupId>
+            <artifactId>esdk-obs-java</artifactId>
+            <version>3.19.7</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.aspose</groupId>
             <artifactId>aspose-cad</artifactId>
             <version>19.9</version>

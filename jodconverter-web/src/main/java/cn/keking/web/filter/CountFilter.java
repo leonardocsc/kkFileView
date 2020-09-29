@@ -3,6 +3,8 @@ package cn.keking.web.filter;
 
 import cn.keking.service.count.CountService;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,7 @@ import java.io.IOException;
  */
 public class CountFilter implements Filter {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CountFilter.class);
 
     /**
      * 租户身份标识
@@ -44,6 +47,8 @@ public class CountFilter implements Filter {
             httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "INSTANCE_ID_HEADER NEED");
             return;
         }
+
+        LOGGER.info("req instanceId is {}", instanceId);
         countService.incr(instanceId);
         chain.doFilter(request, response);
     }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>PDF图片预览</title>
-    <script src="js/lazyload.js"></script>
+    <script src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/lazyload.js"></script>
     <style>
         * {
             margin: 0;
@@ -30,12 +30,12 @@
 <div class="container">
     <#list imgurls as img>
         <div class="img-area">
-            <img class="my-photo" alt="loading" title="查看大图" style="cursor: pointer;" data-src="${img}" src="images/loading.gif" onclick="changePreviewType('allImages')">
+            <img class="my-photo" alt="loading" title="查看大图" style="cursor: pointer;" data-src="${img}" src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/images/loading.gif" onclick="changePreviewType('allImages')">
         </div>
     </#list>
 </div>
-<img src="images/pdf.svg" width="63" height="63" style="position: fixed; cursor: pointer; top: 40%; right: 48px; z-index: 999;" alt="使用PDF预览" title="使用PDF预览" onclick="changePreviewType('pdf')"/>
-<script src="js/watermark.js" type="text/javascript"></script>
+<img src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/images/pdf.svg" width="63" height="63" style="position: fixed; cursor: pointer; top: 40%; right: 48px; z-index: 999;" alt="使用PDF预览" title="使用PDF预览" onclick="changePreviewType('pdf')"/>
+<script src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/watermark.js" type="text/javascript"></script>
 <script>
     window.onload = function () {
         /*初始化水印*/

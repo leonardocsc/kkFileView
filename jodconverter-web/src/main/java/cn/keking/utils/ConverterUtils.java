@@ -57,8 +57,7 @@ public class ConverterUtils {
             officeManager = configuration.buildOfficeManager();
             officeManager.start();
         } catch (Exception e) {
-            logger.error("启动office组件失败，请检查office组件是否可用");
-            throw e;
+            logger.error("启动office组件失败，请检查office组件是否可用", e);
         }
     }
 

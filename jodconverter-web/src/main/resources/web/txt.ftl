@@ -17,8 +17,8 @@
 </head>
 <body>
 <div id = "text"></div>
-<script src="js/jquery-3.0.0.min.js" type="text/javascript"></script>
-<script src="js/watermark.js" type="text/javascript"></script>
+<script src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/jquery-3.0.0.min.js" type="text/javascript"></script>
+<script src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/watermark.js" type="text/javascript"></script>
 <script>
     /*初始化水印*/
     window.onload = function() {

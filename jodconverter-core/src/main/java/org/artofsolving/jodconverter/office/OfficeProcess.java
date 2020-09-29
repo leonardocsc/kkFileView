@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import cn.hutool.core.util.StrUtil;
 import org.apache.commons.io.FileUtils;
 import org.artofsolving.jodconverter.process.ProcessManager;
 import org.artofsolving.jodconverter.process.ProcessQuery;
@@ -84,6 +85,8 @@ class OfficeProcess {
             addBasisAndUrePaths(processBuilder);
         }
         logger.info(String.format("starting process with acceptString '%s' and profileDir '%s'", unoUrl, instanceProfileDir));
+        String commandStr = StrUtil.join(" ", command);
+        logger.info(String.format("commandStr content is '%s'",commandStr));
         process = processBuilder.start();
         pid = processManager.findPid(processQuery);
         if (pid == PID_NOT_FOUND) {

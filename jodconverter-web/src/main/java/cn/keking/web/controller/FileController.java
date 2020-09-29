@@ -61,7 +61,7 @@ public class FileController {
 
         try (InputStream in = file.getInputStream()) {
             String resp = storageService.fileUpload(filePathName, in);
-            return new ObjectMapper().writeValueAsString(new ReturnResponse<String>(0, "SUCCESS", resp));
+            return new ObjectMapper().writeValueAsString(new ReturnResponse<String>(0, "SUCCESS", null));
         } catch (IOException e) {
             logger.error("文件上传失败", e);
             return new ObjectMapper().writeValueAsString(new ReturnResponse<String>(1, "FAILURE", null));

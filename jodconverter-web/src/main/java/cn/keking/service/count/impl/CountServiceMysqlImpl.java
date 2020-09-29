@@ -34,7 +34,7 @@ public class CountServiceMysqlImpl implements CountService {
 
     static {
         Setting setting = new Setting()
-                .set("url", "jdbc:mysql://124.70.44.244:3306/file_preview")
+                .set("url", "jdbc:mysql://localhost:3306/file_preview")
                 .set("username", "root").set("password", "r01ah3Tun7Lo")
                 .set("driver", "com.mysql.jdbc.Driver").set("showSql", "true")
                 .set("formatSql", "true").set("sqlLevel", "info");

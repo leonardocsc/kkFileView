@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title>多媒体文件预览</title>
-    <link rel="stylesheet" href="plyr/plyr.css" />
-    <script type="text/javascript" src="plyr/plyr.js"></script>
-    <script type="text/javascript" src="js/watermark.js"></script>
+    <link rel="stylesheet" href="https://pre-static.obs.cn-north-4.myhuaweicloud.com/plyr/plyr.css" />
+    <script type="text/javascript" src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/plyr/plyr.js"></script>
+    <script type="text/javascript" src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/watermark.js"></script>
     <style>
         * {
             margin: 0;

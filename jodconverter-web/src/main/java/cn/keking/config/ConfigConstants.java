@@ -17,6 +17,7 @@ import java.util.Set;
 public class ConfigConstants {
 
     private static Boolean CACHE_ENABLED;
+    private static Boolean OBS_ENABLED;
     private static String[] SIM_TEXT = {};
     private static String[] MEDIA = {};
     private static String OFFICE_PREVIEW_TYPE;
@@ -45,6 +46,16 @@ public class ConfigConstants {
     public static Boolean isCacheEnabled() {
         return CACHE_ENABLED;
     }
+    public static Boolean isObsEnabled() {
+        return OBS_ENABLED;
+    }
+
+    public static final String URI_ENCODING = "UTF-8";
+
+
+//    @Value("${server.tomcat.uri-encoding:UTF-8}")
+//    private String uriEncoding;
+
 
 //    public static String getConvertedFileCharset() {
 //        return CONVERTED_FILE_CHARSET;
@@ -58,6 +69,15 @@ public class ConfigConstants {
 //    public void setConvertedFileCharset(String convertedFileCharset){
 //        setConvertedFileCharsetValue(convertedFileCharset);
 //    }
+
+    @Value("${obs.enabled:true}")
+    public void setObsEnabled(Boolean obsEnabled) {
+        setObsEnabledValue(obsEnabled);
+    }
+
+    public static void setObsEnabledValue(Boolean obsEnabled) {
+        OBS_ENABLED = obsEnabled;
+    }
 
     @Value("${cache.enabled:true}")
     public void setCacheEnabled(String cacheEnabled) {

@@ -45,6 +45,7 @@ public final class ObsServiceBuilder {
         }
         ObsService obsService = new ObsService();
         obsService.setBucketName(bucketName);
+        obsService.setEndPoint(endPoint);
         obsService.setObsClient(new ObsClient(accessKey, secretKey, endPoint));
         return obsService;
     }

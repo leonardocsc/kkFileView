@@ -1,5 +1,9 @@
 package cn.keking.utils;
 
+import cn.hutool.core.collection.CollUtil;
+import cn.keking.config.ConfigConstants;
+import cn.keking.huawei.ObsService;
+import cn.keking.huawei.ObsServiceContext;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
@@ -32,11 +36,21 @@ public class PdfUtils {
     }
 
     public List<String> pdf2jpg(String pdfFilePath, String pdfName, String baseUrl) {
+        String pdfFolder = pdfName.substring(0, pdfName.length() - 4);
         List<String> imageUrls = new ArrayList<>();
+        Boolean obsEnabled = ConfigConstants.isObsEnabled();
+        ObsService obsService = null;
+        if (obsEnabled) {
+            obsService = ObsServiceContext.getObsService();
+            List<String> urls = obsService.listFolderFiles(pdfFolder);
+            if (CollUtil.isNotEmpty(urls)) {
+                return urls;
+            }
+        }
+
         Integer imageCount = fileUtils.getConvertedPdfImage(pdfFilePath);
         String imageFileSuffix = ".jpg";
-        String pdfFolder = pdfName.substring(0, pdfName.length() - 4);
-        String urlPrefix = null;
+        String urlPrefix;
         try {
             urlPrefix = baseUrl + URLEncoder.encode(URLEncoder.encode(pdfFolder, uriEncoding).replaceAll("\\+", "%20"), uriEncoding);
         } catch (UnsupportedEncodingException e) {
@@ -44,8 +58,8 @@ public class PdfUtils {
             urlPrefix = baseUrl + pdfFolder;
         }
         if (imageCount != null && imageCount > 0) {
-            for (int i = 0; i < imageCount ; i++)
-            imageUrls.add(urlPrefix + "/" + i + imageFileSuffix);
+            for (int i = 0; i < imageCount; i++)
+                imageUrls.add(urlPrefix + "/" + i + imageFileSuffix);
             return imageUrls;
         }
         try {
@@ -61,12 +75,23 @@ public class PdfUtils {
             if (!path.exists()) {
                 path.mkdirs();
             }
+
+            if (obsEnabled) {
+                obsService.newFolder(pdfFolder);
+            }
+
             String imageFilePath;
             for (int pageIndex = 0; pageIndex < pageCount; pageIndex++) {
                 imageFilePath = folder + File.separator + pageIndex + imageFileSuffix;
+                String obsImageFilePath = pdfFolder + "/" + pageIndex + imageFileSuffix;
                 BufferedImage image = pdfRenderer.renderImageWithDPI(pageIndex, 105, ImageType.RGB);
                 ImageIOUtil.writeImage(image, imageFilePath, 105);
-                imageUrls.add(urlPrefix + "/" + pageIndex + imageFileSuffix);
+                if (obsEnabled) {
+                    String osbImgUrl = obsService.fileUpload(obsImageFilePath, new File(imageFilePath));
+                    imageUrls.add(osbImgUrl);
+                } else {
+                    imageUrls.add(urlPrefix + "/" + pageIndex + imageFileSuffix);
+                }
             }
             doc.close();
             fileUtils.addConvertedPdfImage(pdfFilePath, pageCount);

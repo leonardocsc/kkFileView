@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ExtendedModelMap;
+
 import javax.annotation.PostConstruct;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -32,11 +33,11 @@ public class FileConvertQueueTask {
                                 FileUtils fileUtils) {
         this.previewFactory = previewFactory;
         this.cacheService = cacheService;
-        this.fileUtils=fileUtils;
+        this.fileUtils = fileUtils;
     }
 
     @PostConstruct
-    public void startTask(){
+    public void startTask() {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         executorService.submit(new ConvertTask(previewFactory, cacheService, fileUtils));
         logger.info("队列处理文件转换任务启动完成 ");
@@ -57,7 +58,7 @@ public class FileConvertQueueTask {
                            FileUtils fileUtils) {
             this.previewFactory = previewFactory;
             this.cacheService = cacheService;
-            this.fileUtils=fileUtils;
+            this.fileUtils = fileUtils;
         }
 
         @Override
@@ -66,11 +67,13 @@ public class FileConvertQueueTask {
                 String url = null;
                 try {
                     url = cacheService.takeQueueTask();
-                    if(url != null){
+                    if (url != null) {
                         FileAttribute fileAttribute = fileUtils.getFileAttribute(url);
                         FileType fileType = fileAttribute.getType();
                         logger.info("正在处理预览转换任务，url：{}，预览类型：{}", url, fileType);
-                        if(fileType.equals(FileType.compress) || fileType.equals(FileType.office) || fileType.equals(FileType.cad)) {
+                        if (fileType.equals(FileType.compress)
+                                || fileType.equals(FileType.office)
+                                || fileType.equals(FileType.cad)) {
                             FilePreview filePreview = previewFactory.get(fileAttribute);
                             filePreview.filePreviewHandle(url, new ExtendedModelMap(), fileAttribute);
                         } else {
@@ -79,8 +82,8 @@ public class FileConvertQueueTask {
                     }
                 } catch (Exception e) {
                     try {
-                        Thread.sleep(1000*10);
-                    } catch (Exception ex){
+                        Thread.sleep(1000 * 10);
+                    } catch (Exception ex) {
                         ex.printStackTrace();
                     }
                     logger.info("处理预览转换任务异常，url：{}", url, e);

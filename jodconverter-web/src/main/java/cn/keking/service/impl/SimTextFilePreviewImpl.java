@@ -1,5 +1,8 @@
 package cn.keking.service.impl;
 
+import cn.keking.config.ConfigConstants;
+import cn.keking.huawei.ObsService;
+import cn.keking.huawei.ObsServiceContext;
 import cn.keking.model.FileAttribute;
 import cn.keking.model.ReturnResponse;
 import cn.keking.service.FilePreview;
@@ -28,6 +31,13 @@ public class SimTextFilePreviewImpl implements FilePreview {
     public String filePreviewHandle(String url, Model model, FileAttribute fileAttribute){
         String fileName = fileAttribute.getName();
         ReturnResponse<String> response = downloadUtils.downLoad(fileAttribute, fileName);
+
+        ObsService obsService = null;
+        Boolean obsEnable = ConfigConstants.isObsEnabled();
+        if (obsEnable) {
+            obsService = ObsServiceContext.getObsService();
+        }
+
         if (0 != response.getCode()) {
             model.addAttribute("msg", response.getMsg());
             model.addAttribute("fileType",fileAttribute.getSuffix());
@@ -40,6 +50,12 @@ public class SimTextFilePreviewImpl implements FilePreview {
                 previewFile.delete();
             }
             Files.copy(originFile.toPath(), previewFile.toPath());
+
+            if (obsEnable) {
+                String ordinaryUrl = obsService.fileUpload(fileName, previewFile);
+                model.addAttribute("ordinaryUrl", ordinaryUrl);
+                return "txt";
+            }
         } catch (IOException e) {
             model.addAttribute("msg", e.getLocalizedMessage());
             model.addAttribute("fileType",fileAttribute.getSuffix());

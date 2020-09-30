@@ -34,7 +34,7 @@
         </div>
     </#list>
 </div>
-<img src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/images/pdf.svg" width="63" height="63" style="position: fixed; cursor: pointer; top: 40%; right: 48px; z-index: 999;" alt="使用PDF预览" title="使用PDF预览" onclick="changePreviewType('pdf')"/>
+<#--<img src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/images/pdf.svg" width="63" height="63" style="position: fixed; cursor: pointer; top: 40%; right: 48px; z-index: 999;" alt="使用PDF预览" title="使用PDF预览" onclick="changePreviewType('pdf')"/>-->
 <script src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/watermark.js" type="text/javascript"></script>
 <script>
     window.onload = function () {

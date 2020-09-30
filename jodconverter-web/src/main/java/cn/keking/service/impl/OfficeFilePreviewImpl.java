@@ -72,10 +72,10 @@ public class OfficeFilePreviewImpl implements FilePreview {
         }
 
         // 判断之前是否已转换过，如果转换过，直接返回，否则执行转换
-        boolean hasTran = StrUtil.isNotBlank(outFileObsUrl)
+        boolean hasNotTran = StrUtil.isBlank(outFileObsUrl)
                 && (!fileUtils.listConvertedFiles().containsKey(pdfName)
                 || !ConfigConstants.isCacheEnabled());
-        if (hasTran) {
+        if (hasNotTran) {
             String filePath;
             ReturnResponse<String> response = downloadUtils.downLoad(fileAttribute, null);
             if (0 != response.getCode()) {

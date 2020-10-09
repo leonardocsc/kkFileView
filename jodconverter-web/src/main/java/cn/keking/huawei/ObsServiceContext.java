@@ -22,7 +22,7 @@ public class ObsServiceContext {
         Object accessKeyObj = req.getAttribute("accessKey", 0);
         Object secretKeyObj = req.getAttribute("secretKey", 0);
         Object endPointObj = req.getAttribute("endPoint", 0);
-        String bucketName = Convert.toStr(bucketNameObj, "pre");
+        String bucketName = Convert.toStr(bucketNameObj, "preview-test-file");
         String accessKey = Convert.toStr(accessKeyObj, "FIGOLTWBOHLWUCET7BYH");
         String secretKey = Convert.toStr(secretKeyObj, "HBWwhFN9EX6yfHjY8j7Pxl9H4yLIDyTlDHrVpBvP");
         String endPoint = Convert.toStr(endPointObj, "obs.cn-north-4.myhuaweicloud.com");

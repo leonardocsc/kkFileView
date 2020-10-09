@@ -18,7 +18,7 @@
 <body>
     <iframe src="${pdfUrl}" width="100%" frameborder="0"></iframe>
 </body>
-<script src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/watermark.js" type="text/javascript"></script>
+<script src="https://preview-static.obs.cn-north-4.myhuaweicloud.com/js/watermark.js" type="text/javascript"></script>
 <script type="text/javascript">
     document.getElementsByTagName('iframe')[0].height = document.documentElement.clientHeight-10;
     /**

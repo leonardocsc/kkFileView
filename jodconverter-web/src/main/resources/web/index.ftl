@@ -5,16 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0" />
     <title>AI智能文档预览演示首页</title>
-    <link rel="stylesheet" href="https://pre-static.obs.cn-north-4.myhuaweicloud.com/css/viewer.min.css" />
-    <link rel="stylesheet" href="https://pre-static.obs.cn-north-4.myhuaweicloud.com/css/loading.css" />
-    <link rel="stylesheet" href="https://pre-static.obs.cn-north-4.myhuaweicloud.com/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://pre-static.obs.cn-north-4.myhuaweicloud.com/bootstrap-table/bootstrap-table.min.css" />
-    <link rel="stylesheet" href="https://pre-static.obs.cn-north-4.myhuaweicloud.com/gitalk/gitalk.css" />
-    <script type="text/javascript" src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/jquery-3.0.0.min.js"></script>
-    <script type="text/javascript" src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/jquery.form.min.js"></script>
-    <script type="text/javascript" src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/bootstrap-table/bootstrap-table.min.js"></script>
-    <script type="text/javascript" src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/gitalk/gitalk.min.js"></script>
+    <link rel="stylesheet" href="https://preview-static.obs.cn-north-4.myhuaweicloud.com/css/viewer.min.css" />
+    <link rel="stylesheet" href="https://preview-static.obs.cn-north-4.myhuaweicloud.com/css/loading.css" />
+    <link rel="stylesheet" href="https://preview-static.obs.cn-north-4.myhuaweicloud.com/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://preview-static.obs.cn-north-4.myhuaweicloud.com/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="https://preview-static.obs.cn-north-4.myhuaweicloud.com/gitalk/gitalk.css" />
+    <script type="text/javascript" src="https://preview-static.obs.cn-north-4.myhuaweicloud.com/js/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="https://preview-static.obs.cn-north-4.myhuaweicloud.com/js/jquery.form.min.js"></script>
+    <script type="text/javascript" src="https://preview-static.obs.cn-north-4.myhuaweicloud.com/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://preview-static.obs.cn-north-4.myhuaweicloud.com/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="https://preview-static.obs.cn-north-4.myhuaweicloud.com/gitalk/gitalk.min.js"></script>
 </head>
 
 <body>

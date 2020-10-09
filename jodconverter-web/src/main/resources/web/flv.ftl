@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>多媒体文件预览</title>
-    <script src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/flv.min.js"type="text/javascript"></script>
-    <script src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/watermark.js" type="text/javascript"></script>
+    <script src="https://preview-static.obs.cn-north-4.myhuaweicloud.com/js/flv.min.js"type="text/javascript"></script>
+    <script src="https://preview-static.obs.cn-north-4.myhuaweicloud.com/js/watermark.js" type="text/javascript"></script>
 </head>
 <style>
     * {

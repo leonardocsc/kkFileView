@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
-    <link href="https://pre-static.obs.cn-north-4.myhuaweicloud.com/css/zTreeStyle.css" rel="stylesheet" type="text/css">
+    <link href="https://preview-static.obs.cn-north-4.myhuaweicloud.com/css/zTreeStyle.css" rel="stylesheet" type="text/css">
     <style type="text/css">
         * {
             margin: 0;
@@ -35,9 +35,9 @@
 <div class="zTreeDemoBackground left">
     <ul id="treeDemo" class="ztree"></ul>
 </div>
-<script src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/watermark.js" type="text/javascript"></script>
-<script type="text/javascript" src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/jquery-3.0.0.min.js"></script>
-<script type="text/javascript" src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/js/jquery.ztree.core.js"></script>
+<script src="https://preview-static.obs.cn-north-4.myhuaweicloud.com/js/watermark.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://preview-static.obs.cn-north-4.myhuaweicloud.com/js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="https://preview-static.obs.cn-north-4.myhuaweicloud.com/js/jquery.ztree.core.js"></script>
 <script type="text/javascript">
     var data = JSON.parse('${fileTree}');
     var setting = {

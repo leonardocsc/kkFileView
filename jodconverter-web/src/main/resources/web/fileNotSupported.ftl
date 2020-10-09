@@ -30,7 +30,7 @@
 </head>
 <body>
 <div class="container">
-    <img src="https://pre-static.obs.cn-north-4.myhuaweicloud.com/images/sorry.jpg" />
+    <img src="https://preview-static.obs.cn-north-4.myhuaweicloud.com/images/sorry.jpg" />
     <span>
         该文件类型(${fileType})系统暂时不支持在线预览，<b>说明</b>：
         <p style="color: red;">${msg}</p>

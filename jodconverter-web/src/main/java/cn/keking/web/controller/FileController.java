@@ -1,4 +1,5 @@
 package cn.keking.web.controller;
+
 import cn.keking.config.ConfigConstants;
 import cn.keking.huawei.ObsService;
 import cn.keking.huawei.ObsServiceContext;
@@ -9,7 +10,6 @@ import com.google.common.collect.Lists;
 import cn.keking.model.ReturnResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +23,6 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- *
  * @author yudian-it
  * @date 2017/12/1
  */
@@ -52,8 +51,7 @@ public class FileController {
         if (pos != -1) {
             fileName = fileName.substring(pos + 1);
         }
-        ObsService storageService = ObsServiceContext.getObsService("pre", "FIGOLTWBOHLWUCET7BYH",
-                "HBWwhFN9EX6yfHjY8j7Pxl9H4yLIDyTlDHrVpBvP", "obs.cn-north-4.myhuaweicloud.com");
+        ObsService storageService = ObsServiceContext.getObsService();
 
         String filePathName = fileDir + demoPath + fileName;
         storageService.doesObjectExist(filePathName);

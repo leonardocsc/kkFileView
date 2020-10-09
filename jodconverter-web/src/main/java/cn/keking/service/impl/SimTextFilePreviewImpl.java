@@ -28,7 +28,7 @@ public class SimTextFilePreviewImpl implements FilePreview {
     }
 
     @Override
-    public String filePreviewHandle(String url, Model model, FileAttribute fileAttribute){
+    public String filePreviewHandle(String url, Model model, FileAttribute fileAttribute) {
         String fileName = fileAttribute.getName();
         ReturnResponse<String> response = downloadUtils.downLoad(fileAttribute, fileName);
 
@@ -40,7 +40,7 @@ public class SimTextFilePreviewImpl implements FilePreview {
 
         if (0 != response.getCode()) {
             model.addAttribute("msg", response.getMsg());
-            model.addAttribute("fileType",fileAttribute.getSuffix());
+            model.addAttribute("fileType", fileAttribute.getSuffix());
             return "fileNotSupported";
         }
         try {
@@ -52,13 +52,18 @@ public class SimTextFilePreviewImpl implements FilePreview {
             Files.copy(originFile.toPath(), previewFile.toPath());
 
             if (obsEnable) {
-                String ordinaryUrl = obsService.fileUpload(fileName, previewFile);
+                String ordinaryUrl = "";
+                if (obsService.doesObjectExist(fileName)) {
+                    ordinaryUrl = obsService.getObjectUrl(fileName);
+                } else {
+                    ordinaryUrl = obsService.fileUpload(fileName, previewFile);
+                }
                 model.addAttribute("ordinaryUrl", ordinaryUrl);
                 return "txt";
             }
         } catch (IOException e) {
             model.addAttribute("msg", e.getLocalizedMessage());
-            model.addAttribute("fileType",fileAttribute.getSuffix());
+            model.addAttribute("fileType", fileAttribute.getSuffix());
             return "fileNotSupported";
         }
         model.addAttribute("ordinaryUrl", response.getMsg());

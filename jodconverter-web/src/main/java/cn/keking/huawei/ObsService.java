@@ -78,10 +78,10 @@ public class ObsService {
         List<String> ret = new ArrayList<>();
         for (ObsObject object : result.getObjects()) {
             String objectKey = object.getObjectKey();
-            if (Objects.equals(objectKey,prefix)) {
+            if (Objects.equals(objectKey, prefix)) {
                 continue;
             }
-            String r = "https://" + bucketName + "." + endPoint + "/"  + objectKey;
+            String r = "https://" + bucketName + "." + endPoint + "/" + objectKey;
             ret.add(r);
         }
         return ret;
